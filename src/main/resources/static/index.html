@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>SocialBoard</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" class="active">Dashboard</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="twitterUsername" placeholder="Search Twitter username..." />
+            <button onclick="fetchUserInfo()">Search</button>
+        </div>
+
+        <!-- Profile Section -->
+        <div class="profile-banner">
+            <img id="banner-image" src="https://via.placeholder.com/1200x400" alt="Banner Image" class="banner-img">
+            <div class="profile-picture">
+                <img id="profile-img" src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-img" width="400px" height="400px">
+            </div>
+        </div>
+
+        <!-- User Info Section -->
+        <div class="user-info">
+            <h2>Enter User Name In Search Bar</h2>
+            <p></p>
+        </div>
+
+        <!-- Social Media Stats Section -->
+        <div class="social-stats">
+            <div class="stat-box">
+                <h3>Followers</h3>
+                <p id="followers-count">0</p>
+            </div>
+            <div class="stat-box">
+                <h3>Following</h3>
+                <p id="following-count">0</p>
+            </div>
+            <div class="stat-box">
+                <h3>Posts</h3>
+                <p id="posts-count">0</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
