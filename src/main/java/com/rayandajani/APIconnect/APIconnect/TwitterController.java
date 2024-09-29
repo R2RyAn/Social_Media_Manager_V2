@@ -20,7 +20,7 @@ public class TwitterController {
 
     private final String BASE_URL = "https://twitter135.p.rapidapi.com";
     private final String RAPIDAPI_HOST = "twitter135.p.rapidapi.com";
-    private String RAPIDAPI_KEY ="1502958a4emsh553be02805994b8p1ebf4bjsn85f67a3a5e46"; // Replace with @Value("${RAPIDAPI_KEY}") for better security
+    private String RAPIDAPI_KEY ="1502958a4emsh553be02805994b8p1ebf4bjsn85f67a3a5e46";
 
     private final RateLimiter rateLimiter = RateLimiter.create(1.0); // 1 request per second
     private final RestTemplate restTemplate;
