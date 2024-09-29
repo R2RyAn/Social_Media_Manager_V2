@@ -1,3 +1,6 @@
+// Add event listener to the search button
+document.getElementById('searchButton').addEventListener('click', fetchUserInfo);
+
 function fetchUserInfo() {
     // Get the username entered by the user
     const userName = document.getElementById('twitterUsername').value.trim();
@@ -16,21 +19,30 @@ function fetchUserInfo() {
     fetch(`http://localhost:8080/api/twitter/userId?userName=${userName}`)
         .then(response => response.text())
         .then(data => {
-            // Update account name with user ID (optional)
             document.querySelector('.user-info h2').innerText = `${userName}`;
         })
         .catch(error => console.error('Error fetching user ID:', error));
 
-
-    // Fetch User name and display (if needed)
+    // Fetch User Profile Name and display for all elements with the class 'user-name'
     fetch(`http://localhost:8080/api/twitter/userProfileName?userName=${userName}`)
         .then(response => response.text())
         .then(data => {
-            // Update profile name with user ID (optional)
-            document.querySelector('.user-info p').innerText = `@${data}`;
+            // Update all elements with the class 'user-name'
+            document.querySelectorAll('.user-name').forEach(element => {
+                element.innerText = `${data}`;
+            });
         })
-        .catch(error => console.error('Error fetching user ID:', error));
+        .catch(error => console.error('Error fetching user profile name:', error));
 
+    // Update all elements with the class 'user-@name'
+    fetch(`http://localhost:8080/api/twitter/userProfileName?userName=${userName}`)
+        .then(response => response.text())
+        .then(data => {
+            document.querySelectorAll('.user-@name').forEach(element => {
+                element.innerText = `@${data}`;
+            });
+        })
+        .catch(error => console.error('Error fetching user profile name:', error));
 
     // Fetch Follower Count
     fetch(`http://localhost:8080/api/twitter/userFollowerCount?userName=${userName}`)
@@ -40,14 +52,13 @@ function fetchUserInfo() {
         })
         .catch(error => console.error('Error fetching follower count:', error));
 
-
     // Fetch Following Count
     fetch(`http://localhost:8080/api/twitter/userFollowingCount?userName=${userName}`)
         .then(response => response.text())
         .then(data => {
             document.getElementById('following-count').innerText = data;
         })
-        .catch(error => console.error('Error fetching follower count:', error));
+        .catch(error => console.error('Error fetching following count:', error));
 
     // Fetch Tweet Count
     fetch(`http://localhost:8080/api/twitter/userTweetCount?userName=${userName}`)
@@ -55,24 +66,31 @@ function fetchUserInfo() {
         .then(data => {
             document.getElementById('posts-count').innerText = data;
         })
-        .catch(error => console.error('Error fetching follower count:', error));
+        .catch(error => console.error('Error fetching tweet count:', error));
 
-    //Fetch Banner
+    // Fetch Banner Image
     fetch(`http://localhost:8080/api/twitter/userBanner?userName=${userName}`)
         .then(response => response.text())
         .then(data => {
             document.getElementById('banner-image').src = data;
-
         })
-        .catch(error => console.error('Error fetching follower count:', error));
+        .catch(error => console.error('Error fetching banner image:', error));
 
-    //Fetch Profile Picture
+    // Fetch Profile Picture for all elements with the class 'profile-img'
     fetch(`http://localhost:8080/api/twitter/userProfilePicture?userName=${userName}`)
         .then(response => response.text())
         .then(data => {
-            document.getElementById('profile-img').src = data;
-
+            document.querySelectorAll('.profile-img').forEach(element => {
+                element.src = data;
+            });
         })
-        .catch(error => console.error('Error fetching follower count:', error));
-    // (Optional) Add API calls to fetch more social media data like following, posts, etc.
+        .catch(error => console.error('Error fetching profile picture:', error));
+
+    // Fetch tweet content
+    fetch(`http://localhost:8080/api/twitter/userRecentTweets?userName=${userName}`)
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector('#tweet-content p').innerText = data;
+        })
+        .catch(error => console.error('Error fetching tweet content:', error));
 }

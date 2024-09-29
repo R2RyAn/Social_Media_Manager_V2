@@ -21,26 +21,26 @@
         </ul>
     </div>
 
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" id="twitterUsername" placeholder="Search Twitter username..." />
+        <button id="searchButton">Search</button>
+    </div>
+
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Search Bar -->
-        <div class="search-container">
-            <input type="text" id="twitterUsername" placeholder="Search Twitter username..." />
-            <button onclick="fetchUserInfo()">Search</button>
-        </div>
-
         <!-- Profile Section -->
         <div class="profile-banner">
             <img id="banner-image" src="https://via.placeholder.com/1200x400" alt="Banner Image" class="banner-img">
             <div class="profile-picture">
-                <img id="profile-img" src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-img" width="400px" height="400px">
+                <img id="profile-img" src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-img" width="150px" height="150px">
             </div>
         </div>
 
         <!-- User Info Section -->
         <div class="user-info">
-            <h2>Enter User Name In Search Bar</h2>
-            <p></p>
+            <h2 class="user-name">Enter User Name In Search Bar</h2>
+            <p class="user-@name">@username</p>
         </div>
 
         <!-- Social Media Stats Section -->
@@ -56,6 +56,24 @@
             <div class="stat-box">
                 <h3>Posts</h3>
                 <p id="posts-count">0</p>
+            </div>
+        </div>
+
+        <!-- Tweets Section -->
+        <div class="tweets-section">
+            <h3>Recent Tweets</h3>
+            <div class="tweet-card">
+                <div class="tweet-header">
+                    <img src="https://via.placeholder.com/50" alt="Profile Image" class="profile-pic">
+                    <div class="tweet-author">
+                        <h4 class="user-name" >YourName <span class="verified">&#10004;</span> </h4>
+                        <p class="user-@name">@yourname</p>
+                    </div>
+                    <img src="https://pbs.twimg.com/profile_images/1683899100922511378/5lY42eHs_bigger.jpg" class="tweet-logo" alt="Twitter Logo">
+                </div>
+                <div id="tweet-content">
+                    <p>...</p>
+                </div>
             </div>
         </div>
     </div>
